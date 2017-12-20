@@ -1,8 +1,7 @@
 node('master') {
   
    stage('Git Checkout'){
-      git 'https://github.com/savishy/spring-petclinic.git'
-      echo 'checkout done'
+     checkout([$class: 'GitSCM', branches: [[name: '*/master']], browser: [$class: 'GithubWeb', repoUrl: 'https://github.com/ushahspatel/jenkinsPipelineBuildTestDeploy/blob/master/Jenkinsfile'], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/ushahspatel/jenkinsPipelineBuildTestDeploy.git']]])
    }
 
    stage('Maven Build'){
